@@ -30,6 +30,7 @@ export default function RootLayout({
           <Link href="/" className="px-2">首頁</Link>
           <Link href="/contact" className="px-2 border-l">聯絡我</Link>
           <Link href="/about" className="px-2 border-l">關於我</Link>
+          <Link href="/users" className="px-2 border-l">用戶</Link>
         </header>
         <article>
           {children}
