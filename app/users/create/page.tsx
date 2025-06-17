@@ -1,16 +1,35 @@
 "use client"
+
 import Form from 'next/form'
-import { createUser } from './actions'
-import { useActionState } from 'react'
+import { createUser, createUser2 } from './actions'
+import { useActionState, useEffect } from 'react'
+import { redirect } from 'next/navigation';
+import { useFormStatus } from 'react-dom';
+import SubmitWidget from './submitWidget';
 
 export default function CreateUserPage() {
+  const [state, formAction, isPending] = useActionState(createUser2, null);
+  const formStatus = useFormStatus();
+
+  useEffect(() => {
+    if (isPending === false && state?.isSuccess) {
+      redirect(`/users/${state.newUserId}`);
+    }
+  }, [state, isPending])
+
   return (
     <div>
       <h1>Create User</h1>
-      <Form action={createUser}>
+      {isPending && <p>正在提交...</p>}
+      formStatus: {JSON.stringify(formStatus)}
+
+      <Form action={formAction}>
         <input type="text" name="name" placeholder="姓名" required />
         <input type="email" name="email" placeholder="電子郵件" required />
+
         <button type="submit">提交</button>
+
+        <SubmitWidget />
       </Form>
     </div>
   )
