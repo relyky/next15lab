@@ -7,6 +7,9 @@ export default async function Users() {
   return (
     <div>
       <h1>User List</h1>
+      <p>
+        <Link href={`/users/create`}>新增 User</Link>
+      </p>
       <ul className="pl-4">
         {users.map((user: { id: number, name: string }) => (
           <li key={user.id}>
