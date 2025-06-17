@@ -1,3 +1,4 @@
+import Link from "next/link"
 
 export default async function Users() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users")
@@ -9,11 +10,12 @@ export default async function Users() {
       <ul className="pl-4">
         {users.map((user: { id: number, name: string }) => (
           <li key={user.id}>
-            <h3>{user.id}: {user.name}</h3>
+            <Link href={`/users/${user.id}`}>
+              {user.id}: {user.name}
+            </Link>
           </li>
         ))}
       </ul>
-
     </div>
   )
 }
