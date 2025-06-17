@@ -10,8 +10,15 @@ export default async function Contact() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">聯絡我2</h1>
+      <h1 className="text-4xl font-bold">聯絡我<small>(畫面載入時是 SSG 渲染模式)</small></h1>
       <ButtonWidget />
+
+      <ul>
+        {posts.map((post: { id: number, title: string }) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+
     </div>
   )
 }
