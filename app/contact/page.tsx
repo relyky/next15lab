@@ -1,12 +1,14 @@
+
+import { delayAsync } from "@/app/utils"
 import ButtonWidget from "./buttonWidget"
 
 export default async function Contact() {
   console.log("【Contact】這在伺服端還是在客戶端？")
 
   const response = await fetch("https://jsonplaceholder.typicode.com/posts")
-  await delayAsync(2000) // 畫面卡住
+  await delayAsync(2000) // 模擬跑很久
   const posts = await response.json()
-  console.log('posts', posts)
+  //console.log('posts', posts)
 
   return (
     <div>
@@ -23,6 +25,3 @@ export default async function Contact() {
   )
 }
 
-function delayAsync(ms: number) {
-  return new Promise<void>(resolve => setTimeout(resolve, ms));
-}
