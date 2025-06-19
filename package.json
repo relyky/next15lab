@@ -10,6 +10,9 @@
     "proto:generate": "protoc --ts_out generated --proto_path protos protos/*.proto"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.13.4",
+    "@protobuf-ts/runtime": "^2.11.1",
+    "@protobuf-ts/runtime-rpc": "^2.11.1",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
