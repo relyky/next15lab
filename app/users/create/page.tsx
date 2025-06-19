@@ -4,12 +4,11 @@ import Form from 'next/form'
 import { createUser, createUser2 } from './actions'
 import { useActionState, useEffect } from 'react'
 import { redirect } from 'next/navigation';
-import { useFormStatus } from 'react-dom';
-import SubmitWidget from './submitWidget';
+import SubmitWidget from '@/app/widgets/submitWidget';
+import FormStatusWidget from '@/app/widgets/FormStatusWidget';
 
 export default function CreateUserPage() {
   const [state, formAction, isPending] = useActionState(createUser2, null);
-  const formStatus = useFormStatus();
 
   useEffect(() => {
     if (isPending === false && state?.isSuccess) {
@@ -21,15 +20,16 @@ export default function CreateUserPage() {
     <div>
       <h1>Create User</h1>
       {isPending && <p>正在提交...</p>}
-      formStatus: {JSON.stringify(formStatus)}
 
       <Form action={formAction}>
+
         <input type="text" name="name" placeholder="姓名" required />
         <input type="email" name="email" placeholder="電子郵件" required />
 
         <button type="submit">提交</button>
 
         <SubmitWidget />
+        <FormStatusWidget />
       </Form>
     </div>
   )

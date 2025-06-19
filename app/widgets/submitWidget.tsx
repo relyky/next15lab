@@ -8,7 +8,6 @@ export default function SubmitWidget() {
   return (
     <div>
       <button type="submit" disabled={formStatus.pending}>提交 </button>
-      <pre>{JSON.stringify(formStatus, null, 2)}</pre>
     </div>
   )
 }
