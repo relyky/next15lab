@@ -11,8 +11,8 @@ export default function GrpcDemo() {
       setMessage('')
       setLoading(true)
 
-      const result = await act.handleSayHello()
-      console.log('ON:handleSayHello→', result)
+      const result = await act.sayHello()
+      console.log('ON:handleSayHello →', result)
 
       setMessage(JSON.stringify(result, null, 2))
     }
@@ -29,8 +29,8 @@ export default function GrpcDemo() {
       setMessage('')
       setLoading(true)
 
-      const result = await act.handleSayHelloInsecure()
-      console.log('ON:handleSayHello→', result)
+      const result = await act.sayHelloInsecure()
+      console.log('ON:handleSayHelloInsecure →', result)
 
       setMessage(JSON.stringify(result, null, 2))
     }

@@ -19,7 +19,7 @@ const transport = new GrpcTransport({
 const client = new GreeterClient(transport);
 const clientInsecure = new GreeterClient(transportInsecure);
 
-export async function handleSayHello() {
+export async function sayHello() {
 
   const request: HelloRequest = {
     name: 'Smart'
@@ -28,15 +28,15 @@ export async function handleSayHello() {
   try {
     const call = client.sayHello(request); 
     const response = await call.response;
-    console.info('handleSayHello response →', response)
+    console.info('sayHello response →', response)
     return response;
   } catch (error) {
-    console.error('handleSayHello error →', error);
+    console.error('sayHello error →', error);
     throw error;
   }
 }
 
-export async function handleSayHelloInsecure() {
+export async function sayHelloInsecure() {
 
   const request: HelloRequest = {
     name: 'Smart (insecure)'
@@ -45,10 +45,10 @@ export async function handleSayHelloInsecure() {
   try {
     const call = clientInsecure.sayHello(request); 
     const response = await call.response;
-    console.info('handleSayHello response →', response)
+    console.info('sayHelloInsecure response →', response)
     return response;
   } catch (error) {
-    console.error('handleSayHello error →', error);
+    console.error('sayHelloInsecure error →', error);
     throw error;
   }
 }
