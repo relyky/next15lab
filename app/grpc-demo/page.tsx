@@ -14,7 +14,7 @@ export default function GrpcDemo() {
 
       const result = await act.handleSayHello()
       console.log('ON:handleSayHello→', result)
-      await delayAsync(2000)
+      //await delayAsync(2000)
 
       setMessage(JSON.stringify(result, null, 2))
     }
