@@ -38,6 +38,7 @@ export default function RootLayout({
           <Link href="/contact" className="px-2 border-l">聯絡我</Link>
           <Link href="/about" className="px-2 border-l">關於我</Link>
           <Link href="/users" className="px-2 border-l">用戶</Link>
+          <Link href="/grpc-demo" className="px-2 border-l">gRPC 展示</Link>
         </header>
         <article>
           {children}
