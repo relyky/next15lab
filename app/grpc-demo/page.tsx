@@ -1,6 +1,5 @@
 "use client"
 import { useState } from "react";
-import { delayAsync } from "../utils";
 import * as act from "./actions";
 
 export default function GrpcDemo() {
@@ -14,7 +13,24 @@ export default function GrpcDemo() {
 
       const result = await act.handleSayHello()
       console.log('ON:handleSayHello→', result)
-      //await delayAsync(2000)
+
+      setMessage(JSON.stringify(result, null, 2))
+    }
+    catch (err: unknown) {
+      setMessage(JSON.stringify(err, null, 2))
+    }
+    finally {
+      setLoading(false)
+    }
+  }
+
+  async function handleSayHelloInsecure() {
+    try {
+      setMessage('')
+      setLoading(true)
+
+      const result = await act.handleSayHelloInsecure()
+      console.log('ON:handleSayHello→', result)
 
       setMessage(JSON.stringify(result, null, 2))
     }
@@ -34,7 +50,10 @@ export default function GrpcDemo() {
       <button className="px-2 py-1 border rounded"
         onClick={handleSayHello}>gRPC sayHello</button>
 
-      <br/>      
+      <button className="px-2 py-1 border rounded"
+        onClick={handleSayHelloInsecure}>gRPC sayHello(insecure)</button>
+
+      <br />
       <label>message</label>
       <pre>{message}</pre>
     </div>

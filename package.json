@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "proto:generate": "protoc --ts_out generated --proto_path protos protos/*.proto"
+    "proto:generate": "protoc --ts_out generated --proto_path protos protos/*.proto",
+    "dev:https": "ts-node server.ts"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.13.4",
